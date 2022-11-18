@@ -42,9 +42,13 @@ app.get('/api/pastes', async (request, result) => {
 app.get('/api/:id', async (request, result) => {
 	try {
 		let selected_paste = await Paste.findOne({
-			_id: request.parms.id
+			_id: request.params.id
 		});
-		result.sendStatus(200);
+
+		if(selected_paste == undefined) {
+			throw "Paste does not exist";
+		}
+		result.send(selected_paste);
 	} catch (error) {
 		console.log(error);
 		result.sendStatus(500);
@@ -57,8 +61,8 @@ app.post('/api/new', async (request, result) => {
 		contents: request.body.contents
 	});
 	try {
-		await new_paste.save();
-		result.sendStatus(200);
+		var new_paste_result = await new_paste.save();
+		result.send(new_paste_result);
 	} catch (error) {
 		console.log(error);
 		result.sendStatus(500);

@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+:root {
+	--main_bg: #0C0C0D;
+	--main_fg: #5FAFFF;
+	--interactable_fg: #5F5FD7;
+	--selected_fg: #00AFFF;
+	--title: #D75FFF;
+	--high_fg: #87D7FF;
+	--high_bg: var(--main_bg);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App { text-align: center; }
+
+body {
+	background-color: var(--main_bg);
+	font-family: Helvetica Neue, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p, label { color: var(--main_fg); }
+
+h1,h2,h3,h4,h5,h6 { color: var(--title); }
+
+a[href] { color: var(--interactable_fg); text-decoration: none; }
+
+a[href]:hover { color: var(--selected_fg); }
+
+input[type="text"], textarea {
+	color: var(--high_fg);
+	background-color: var(--high_bg);
+	border: 1px solid var(--selected_fg);
+	border-radius: 3px;
+
+	margin: 10px;
+	padding: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+textarea { width: 70%; height: 100px; }
+
+input[type="submit"] {
+	color: var(--interactable_fg);
+	background-color: var(--high_bg);
+	border: 1px solid var(--high_bg);
+	border-radius: 3px;
+}
+input[type="submit"]:hover {
+	color: var(--selected_fg);
+	background-color: var(--high_fg);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
